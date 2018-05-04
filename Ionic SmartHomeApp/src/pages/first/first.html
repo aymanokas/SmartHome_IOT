@@ -1,0 +1,297 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content style="background-color:#1c1e3f">
+
+
+  <div class="card-background-page">
+    <ion-card>
+      <img src="assets/headerFirst.jpg" />
+      <div class="card-title">Iot Ehtp
+        <hr>
+      </div>
+
+      <ion-row>
+        <ion-col class="card-subtitle1">
+          <div style="color:lightgrey">
+            <ion-icon name="thermometer">&nbsp;&nbsp;{{temp}}°C</ion-icon>
+          </div>
+        </ion-col>
+
+        <ion-col offset-3 class="card-subtitle2">
+          <div style="color:lightgrey">
+            <ion-icon name="rainy">&nbsp;&nbsp;{{rain}} mm</ion-icon>
+          </div>
+        </ion-col>
+
+        <ion-col offset-6 class="card-subtitle3">
+          <div style="color:lightgrey">
+            <ion-icon name="water">&nbsp;&nbsp;{{humidity}} %</ion-icon>
+          </div>
+        </ion-col>
+
+        <ion-col offset-9 class="card-subtitle4">
+          <div style="color:lightgrey">
+            <ion-icon name="bonfire">&nbsp;&nbsp;{{fire}} Fid</ion-icon>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </ion-card>
+  </div>
+
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 >
+        <ion-card (tap)="lockHouse()"  class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="lock"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Unlock the house
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col col-4 *ngIf="lockHouseClicked == 1">
+        <ion-card (tap)="lockHouse()" [ngClass]="lockHouseClicked ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card" name="unlock"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Lock the house
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+
+      <ion-col col-4>
+        <ion-card (tap)="streamCam()" [ngClass]="cardClicked[7] ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="videocam"></ion-icon>
+            <ion-card-title class="card-title-small">
+              Stream Cam
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-4>
+        <ion-card (tap)="callHome()" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="call"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Call Home
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row>
+        <ion-col col-4 *ngIf="alarmLunched == 0">
+            <ion-card (tap)="alarmClicked()" [ngClass]="alarmLunched ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+              <ion-icon class="icon-small-card-lock" name="volume-mute"></ion-icon>
+            <ion-card-title class="card-title-small">
+              Alarme
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-4 *ngIf="alarmLunched == 1">
+          <ion-card (tap)="alarmClicked()" [ngClass]="alarmLunched ? 'card-small-clicked' : card-smalll" class="card-smalll">
+            <ion-card-content>
+                <ion-icon class="icon-small-card" name="volume-mute"></ion-icon>
+              <ion-card-title class="card-title-small">
+                Alarme
+              </ion-card-title>
+  
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+      <ion-col col-4 *ngIf="coffreHidden == 0">
+          <ion-card (tap)="coffreClicked()" [ngClass]="coffreHidden ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+              <ion-icon  class="icon-small-card-lock" name="cube"></ion-icon>
+            <ion-card-title class="card-title-small">
+              Coffre
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-4 *ngIf="coffreHidden == 1">
+          <ion-card (tap)="coffreClicked()" [ngClass]="coffreHidden ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+              <ion-icon  class="icon-small-card" name="cube"></ion-icon>
+            <ion-card-title class="card-title-small">
+              Coffre
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+
+      <ion-col col-4>
+        <ion-card (tap)="setTemp()" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="thermometer"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Set Temperature
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+
+      <ion-col col-4 *ngIf="lightClickedBol == 0"> 
+        <ion-card (tap)="lightOn()" [ngClass]=" lightClickedBol? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="bulb"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Light : {{light}}%
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-4 *ngIf="lightClickedBol == 1">
+          <ion-card (tap)="lightOn()" [ngClass]=" lightClickedBol? 'card-small-clicked' : card-smalll" class="card-smalll">
+  
+            <ion-card-content>
+              <ion-icon class="icon-small-card" name="bulb"></ion-icon>
+              <ion-card-title style="color:lightgrey" class="card-title-small">
+                Light : {{light}}%
+              </ion-card-title>
+  
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      <ion-col col-4 *ngIf="terasseClickedBol == 1">
+          <ion-card (tap)="ferfer(1)" [ngClass]="terasseClickedBol ? 'card-small-clicked' : card-smalll" class="card-smalll">
+  
+            <ion-card-content>
+                <ion-icon class="icon-small-card" name="umbrella"></ion-icon>
+
+              <ion-card-title class="icon-small-card-lock" class="card-title-small">
+                Terasse : {{terass}}%
+              </ion-card-title>
+  
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-4 *ngIf="terasseClickedBol == 0">
+            <ion-card (tap)="ferfer(1)" [ngClass]="terasseClickedBol ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+              <ion-icon class="icon-small-card-lock" name="umbrella"></ion-icon>
+
+            <ion-card-title class="icon-small-card" class="card-title-small">
+              Terasse : {{terass}}%
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-4 *ngIf="windowClickedBol == 0">
+        <ion-card (tap)="ferfer(2)" [ngClass]="windowClickedBol ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card-lock" name="grid"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Open window : {{window}}%
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-4 *ngIf="windowClickedBol == 1">
+        <ion-card (tap)="ferfer(2)" [ngClass]="windowClickedBol ? 'card-small-clicked' : card-smalll" class="card-smalll">
+
+          <ion-card-content>
+            <ion-icon class="icon-small-card" name="grid"></ion-icon>
+            <ion-card-title style="color:lightgrey" class="card-title-small">
+              Open window : {{window}}%
+            </ion-card-title>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row *ngIf="lightClickedBol || terasseClickedBol || windowClickedBol"> 
+
+
+    <ion-col col-8>
+      <ion-item style="background-color:transparent">
+        <ion-range min="0" max="180"  style="background-color:transparent!important; " color="primary" pin="true" [(ngModel)]="ferfervalue">
+          <ion-label style="color:white" range-left>0</ion-label>
+          <ion-label style="color:white" range-right>180</ion-label>
+        </ion-range>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-4 style="padding-top:10%">
+      <ion-row text-center style="display: block!important">
+        <button  ion-button round outline (click)="setClicked()">Set</button>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-footer style="background-color:#1c192e">
+  <ion-toolbar transparent>
+    <ion-title>
+      <p align=" center " style="color:white;font-size:0.9em;font-weight:normal">Made with &nbsp;&nbsp;
+        <ion-icon style="color:red" name="heart">
+        </ion-icon> &nbsp;&nbsp; & &nbsp;&nbsp;
+        <ion-icon style="color:black" name="cafe"></ion-icon>
+      </p>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

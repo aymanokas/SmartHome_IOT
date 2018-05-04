@@ -1,0 +1,20 @@
+<ion-header>
+  
+</ion-header>
+
+<ion-content text-center padding style="background-color:#1C2331;text-align:center">
+<p style="color:white">{{ip}}</p>
+<p style="color:white">{{link}}</p>
+    <div style="padding-top:45%">
+        <button (touchstart) = "avancer()" (touchend)="sendS()" style="border-radius : 50%; height:80px; width: 80px" ion-button  color="light" outline large><ion-icon style="font-size: 40px;"  name="arrow-dropup"></ion-icon></button>
+
+      <br>
+      <button (touchstart) = "tg()" (touchend)="sendS()"  style="border-radius : 50%;  height:80px; width: 80px" ion-button color="light" outline large ><ion-icon style="font-size: 40px;"  name="arrow-dropleft"></ion-icon></button>
+ 
+      <button (touchstart) = "td()" (touchend)="sendS()"  style="margin-left : 27% ;border-radius : 50%;  height:80px; width: 80px" ion-button color="light" outline large><ion-icon style="font-size: 40px;"  name="arrow-dropright"></ion-icon></button>
+      <br>
+      <button (touchstart) = "reculer()" (touchend)="sendS()"  style="border-radius : 50%; height:80px; width: 80px " ion-button color="light" outline large><ion-icon style="font-size: 40px;"  name="arrow-dropdown"></ion-icon></button>
+    </div>
+    <input type="text" placeholder="Set IP" [(ngModel)]= "ip">
+    
+</ion-content>
